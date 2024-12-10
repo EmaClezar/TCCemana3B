@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Fornecedores</title>
+</head>
+<body>
+    <h1>Fornecedores</h1>
+    <a href="/fornecedores/new">Adicionar Novo Fornecedor</a>
+    <ul>
+        <% fornecedores.forEach(fornecedor => { %>
+            <li>
+                <a href="/fornecedores/<%= fornecedor.id %>">
+                    <%= fornecedor.nome %> - <%= fornecedor.email %> <%= fornecedor['CPF/CNPJ'] %> <%= fornecedor.telefone %> <%= fornecedor.endereco %>
+
+      
+                </a>
+                <a href="/fornecedores/<%= fornecedor.id %>/edit">Editar</a>
+                <form action="/fornecedores/<%= fornecedor.id %>?_method=DELETE" method="POST">
+                    <button type="submit">Excluir</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>

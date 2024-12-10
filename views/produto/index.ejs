@@ -1,0 +1,33 @@
+<h1>Lista de produto</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Categoria</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% produto.forEach(produto => { %>
+            <tr>
+                <td><%= produto.id %></td>
+                <td><%= produto.nome %></td>
+                <td><%= produto.descricao %></td>
+                <td><%= produto.preco %></td>
+                <td><%= produto.quantidade %></td>
+                <td><%= produto.categoria_nome %></td>
+                <td>
+                    <a href="/produto/<%= produto.id %>" class="btn btn-primary">View</a>
+                    <a href="/produto/<%= produto.id %>/edit" class="btn btn-warning">Edit</a>
+                    <form action="/produto/<%= produto.id %>?_method=DELETE" method="POST" style="display: inline;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>

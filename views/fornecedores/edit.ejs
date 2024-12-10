@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Fornecedor</title>
+</head>
+<body>
+    <h1>Editar Fornecedor</h1>
+    <form action="/fornecedores/<%= fornecedor.id %>?_method=PUT" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" value="<%= fornecedor.nome %>" required>
+        <br>
+        <label for="cpf_cnpj">CPF/CNPJ:</label>
+        <input type="text" name="cpf_cnpj" value="<%= fornecedor['CPF/CNPJ'] %>" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="<%= fornecedor.email %>" required>
+        <br>
+        <label for="telefone">Telefone:</label>
+        <input type="text" name="telefone" value="<%= fornecedor.telefone %>" required>
+        <br>
+        <label for="endereco">Endereço:</label>
+        <input type="text" name="endereco" value="<%= fornecedor.endereco %>" required>
+        <br>
+        <button type="submit">Salvar Alterações</button>
+    </form>
+</body>
+</html>

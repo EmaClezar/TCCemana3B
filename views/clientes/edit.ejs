@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Cliente</title>
+</head>
+<body>
+    <h1>Editar Cliente</h1>
+    <form action="/clientes/<%= cliente.id %>?_method=PUT" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" value="<%= cliente.nome %>" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="<%= cliente.email %>" required>
+        <br>
+        <label for="telefone">Telefone:</label>
+        <input type="text" name="telefone" value="<%= cliente.telefone %>" required>
+        <br>
+        <label for="endereco">Endereço:</label>
+        <input type="text" name="endereco" value="<%= cliente.endereco %>" required>
+        <br>
+        <label for="telefone">CPF:</label>
+        <input type="number" name="cpf" value="<%= cliente.cpf %>" required>
+        <br>
+        <label for="divida">Divida:</label>
+        <input type="number" name="divida" value="<%= cliente.divida %>" required>
+        <br>
+        <button type="submit">Salvar Alterações</button>
+    </form>
+</body>
+</html>

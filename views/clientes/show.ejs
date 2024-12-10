@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalhes do Cliente</title>
+</head>
+<body>
+    <h1><%= cliente.nome %></h1>
+    <p>Email: <%= cliente.email %></p>
+    <p>Telefone: <%= cliente.telefone %></p>
+    <p>Endereço: <%= cliente.endereco %></p>
+    <p>CPF: <%= cliente.cpf %></p>
+    <p>Divida: <%= cliente.divida %></p>
+
+    <a href="/clientes/<%= cliente.id %>/edit">Editar</a>
+    <form action="/clientes/<%= cliente.id %>?_method=DELETE" method="POST">
+        <button type="submit">Excluir</button>
+    </form>
+</body>
+</html>

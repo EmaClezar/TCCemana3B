@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalhes do Fornecedor</title>
+</head>
+<body>
+    <h1><%= fornecedor.nome %></h1>
+    <p>Email: <%= fornecedor.email %></p>
+    <p>CPF/CNPJ: <%= fornecedor.CPF/CNPJ %></p>
+    <p>Telefone: <%= fornecedor.telefone %></p>
+    <p>Endereço: <%= fornecedor.endereco %></p>
+
+    <a href="/fornecedores/<%= fornecedor.id %>/edit">Editar</a>
+    <form action="/fornecedores/<%= fornecedor.id %>?_method=DELETE" method="POST">
+        <button type="submit">Excluir</button>
+    </form>
+</body>
+</html>
