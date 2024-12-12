@@ -1,76 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Nova Venda</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
-    
     <style>
-        /* Estilo geral do corpo da página */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #c0c7ce;
-            color: #495057;
-            margin: 0;
-            padding: 0;
+        /* Estilo da Navbar */
+        .navbar {
+            background-color: #0259b7; /* Azul Escuro */
+            padding: 1rem 2rem;
+            border-bottom: 3px solid #004085; /* Sombra de destaque */
         }
 
-        /* Container principal */
-        .container {
-            max-width: 900px;
+        .navbar-brand {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            font-size: 1.1rem;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #cce5ff; /* Azul claro ao passar o mouse */
+        }
+
+        .navbar-nav .dropdown-menu {
+            background-color: #0056b3; /* Azul mais escuro */
+            border: none;
+        }
+
+        .dropdown-item {
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #004085;
+            color: #cce5ff;
+        }
+
+        /* Estilo da caixinha de formulário */
+        .form-container {
+            max-width: 600px;
             margin: 50px auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #0259b7;
         }
 
         /* Título */
-        h1 {
-            color: #007bff;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
+        .form-container h1 {
+            color: #0259b7;
             text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        /* Estilo dos campos do formulário */
+        .form-group label {
+            font-size: 1.1rem;
+            color: #495057;
             font-weight: 600;
         }
 
-        /* Estilo para os campos do formulário */
-        .form-group label {
-            font-size: 1rem;
-            color: #495057;
-        }
-
         .form-control {
-            border-radius: 10px;
+            border-radius: 8px;
             border: 1px solid #ced4da;
-            padding: 12px 20px;
-            font-size: 1rem;
-            width: 100%;
+            padding: 12px 15px;
+            font-size: 1.1rem;
             transition: border 0.3s, box-shadow 0.3s;
         }
 
-        /* Efeito ao focar no campo de input */
         .form-control:focus {
-            border-color: #007bff;
+            border-color: #0259b7;
             box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         }
 
         /* Botão de envio */
         button[type="submit"] {
-            background-color: #007bff;
-            color: white;
+            background-color: #0259b7;
+            color: #fff;
             border: none;
-            padding: 14px 20px;
+            padding: 12px 20px;
             font-size: 1.2rem;
             font-weight: bold;
-            border-radius: 10px;
+            border-radius: 8px;
             width: 100%;
             transition: background-color 0.3s, transform 0.3s;
         }
 
         button[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #004085;
             transform: translateY(-2px);
         }
 
@@ -78,38 +114,34 @@
             transform: translateY(2px);
         }
 
-        /* Espaçamento extra nos campos do formulário */
+        /* Ajuste no espaçamento dos campos do formulário */
         .form-group {
-            margin-bottom: 25px;
-        }
-
-        /* Estilo de erro */
-        .form-text {
-            font-size: 0.9rem;
-            color: #dc3545;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="form-container">
         <h1>Cadastrar Nova Venda</h1>
         <form action="/vendas" method="POST">
-
             <!-- Campo para a data -->
             <div class="form-group">
-                <label for="data" class="form-label">Data da Venda</label>
+                <label for="data">Data da Venda</label>
                 <input type="date" class="form-control" id="data" name="data" required>
             </div>
 
             <!-- Campo para o valor -->
             <div class="form-group">
-                <label for="valor" class="form-label">Valor Total (R$)</label>
+                <label for="valor">Valor Total (R$)</label>
                 <input type="number" step="0.01" class="form-control" id="valor" name="valor" placeholder="Ex: 150.00" required>
             </div>
 
             <!-- Botão de cadastro -->
-            <button type="submit">Cadastrar Venda</button>
+            <button type="submit" class="btn btn-primary">Cadastrar Venda</button>
         </form>
     </div>
+
+    <!-- Scripts do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

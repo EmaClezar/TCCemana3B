@@ -5,183 +5,193 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gerenciamento do Mercado Baltazar</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-       /* Estilo global */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #d8d8d8;
-    margin: 0;
-    padding: 0;
-}
+        /* Estilo global */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+          
+        }
 
-/* Jumbotron */
-.jumbotron {
-    background: linear-gradient(135deg, #0259b7, #00c9ff);
-    color: white;
-    padding: 3rem 2rem;
-    margin-bottom: 2.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-.jumbotron:hover {
-    transform: scale(1.02);
-}
-.jumbotron h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-.jumbotron p.lead {
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-top: 1rem;
-    opacity: 0.9;
-}
+        /* Jumbotron */
+        .jumbotron {
+            background: linear-gradient(135deg, #0a519e, #72d2f8);
+            color: white;
+            padding: 3rem 2rem;
+            margin-bottom: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
 
-/* Botões personalizados */
-.btn-custom {
-    background-color: #ff7675;
-    color: white;
-    border-radius: 50px;
-    padding: 0.75rem 2rem;
-    font-size: 1.15rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    display: inline-block;
-}
-.btn-custom:hover {
-    background-color: #d63031;
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
+        .jumbotron:hover {
+            transform: scale(1.02);
+        }
 
-/* Cartões de funcionalidades */
-.feature-card {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 20px;
-    margin-bottom: 2rem;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    text-align: center;
-}
-.feature-card:hover {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    transform: translateY(-10px);
-}
-.feature-card h3 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #333;
-}
-.feature-card p {
-    font-size: 1.1rem;
-    color:  #007bff;
-    margin-top: 1rem;
-}
+        .jumbotron h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
 
-/* Estilização da Navbar */
-header {
-    background-color: #007bff; 
-}
+        .jumbotron p.lead {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 1rem;
+            opacity: 0.9;
+        }
 
-.navbar {
-    background-color: #007bff;
-    padding: 1rem 2rem;
-}
+        /* Botões personalizados */
+        .btn-custom {
+            background-color: #0062cc;
+            color: rgb(255, 255, 255);
+            border-radius: 50px;
+            padding: 0.75rem 2rem;
+            font-size: 1.15rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
 
-.navbar-brand {
-    color: #ffffff;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
+        .btn-custom:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
 
-.navbar-brand img {
-    height: 100px;
-    width: 200px; /* Define altura e largura iguais para a imagem quadrada */
-    margin-right: 15px;
-    border-radius: 5px; /* Bordas ligeiramente arredondadas */
-}
+        /* Cartões de funcionalidades */
+        .feature-card {
+            background-color: #d9d6d6;
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
 
-.navbar-toggler {
-    border: none;
-}
+        .feature-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+        }
 
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
+        .feature-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+        }
 
-/* Links de navegação */
-.nav-link {
-    color: #ffffff;
-    font-size: 1rem;
-    margin-right: 1rem;
-    transition: color 0.3s ease;
-}
+        .feature-card p {
+            font-size: 1.1rem;
+            color: #000000;
+            margin-top: 1rem;
+        }
 
-.nav-link:hover {
-    color: #cce5ff; /* Azul claro */
-}
+        /* Estilização da Navbar */
+        header {
+            background-color: #0062cc; 
+            width: 100vw; /* Garante que o header ocupe toda a largura da tela visível */
+            margin: 0; /* Remove margens */
+            padding: 0.5rem 1rem; /* Adiciona espaçamento interno */
+            position: relative; /* Navbar não fixa */
+            
+            
+        }
 
-.navbar-nav .nav-item .dropdown-menu {
-    background-color: #0056b3; /* Azul mais escuro */
-    border: none;
-}
+        .navbar-nav .dropdown-menu {
+            background-color: #0056b3; /* Azul mais escuro */
+            border: none;
+     
+        }
+        .navbar {
+            background-color: #0062cc; 
+            margin: 20px;
+            padding: 0;
+            width: 138%; /* Reduz a largura do footer */
+            margin-left: -20%;
+        }
 
-.dropdown-item {
-    color: #ffffff;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease;
-}
+        .navbar-brand {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
 
-.dropdown-item:hover {
-    background-color: #004085; /* Azul ainda mais escuro */
-    color: #cce5ff; /* Azul claro */
-}
+        .navbar-brand img {
+            height: 50px;
+            width: auto;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
 
-/* Efeitos e estilo adicional */
-.dropdown-toggle::after {
-    border-top: 0.3em solid #cce5ff;
-}
+        .navbar-toggler {
+            border: none;
+        }
 
-.dropdown-menu {
-    border-radius: 0.25rem;
-}
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
 
-.active {
-    color: #cce5ff !important;
-}
+        /* Links de navegação */
+        .nav-link {
+            color: #ffffff;
+            font-size: 0.9rem;
+            margin-right: 1rem;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
 
+        .nav-link:hover {
+            color: #cce5ff;
+        }
 
-
-
-/* Rodapé 
-footer.footer {
+        /* Rodapé */
+        footer.footer {
     background-color: #0062cc;
-    color: rgb(255, 255, 255);
-    padding: 2rem 0;
+    color: #fff;
+    padding: 0.5rem 0;
     text-align: center;
     border-radius: 10px 10px 0 0;
-    box-shadow: 0 -5px 10px rgba(73, 73, 73, 0.455);
+    box-shadow: 0 -5px 10px rgba(183, 182, 182, 0.455);
+    width: 138%; /* Reduz a largura do footer */
+    left: 30%; /* Move o footer mais para a esquerda */
+    font-size: 0.8rem;
+    margin: 0;
+    bottom: 0;
+    margin-left: -20%;
 }
+
 footer.footer span {
     font-size: 0.9rem;
-    color: #b2bec3;
-}*/
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .jumbotron h1 {
-        font-size: 2.5rem;
-    }
-    .feature-card h3 {
-        font-size: 1.5rem;
-    }
+    color: #d5d9da;
 }
 
-        
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .jumbotron h1 {
+                font-size: 2.5rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.5rem;
+            }
+
+            .navbar-nav {
+                text-align: center;
+                justify-content: center;
+            }
+
+            .navbar-nav .nav-item {
+                margin-right: 0;
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -192,13 +202,13 @@ footer.footer span {
         <!-- Main content -->
         <%- body %>
 
-        <!-- Footer (Rodapé) 
+        <!-- Footer -->
         <footer class="footer mt-auto py-3 text-center">
             <div class="container">
-                <span class="text-muted">&copy; 2024 Mercado Baltazar</span>
+                <span class="text-muted">&copy; 2024 Mercado Baltazar. Todos os direitos reservados.</span>
             </div>
         </footer>
-    </div> -->
+    </div>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

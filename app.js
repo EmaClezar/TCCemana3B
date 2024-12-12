@@ -5,7 +5,6 @@ const expressLayouts = require('express-ejs-layouts');
 
 // Importação das rotas
 const indexRoutes = require('./routes/indexRoutes');
-const userRoutes = require('./routes/userRoutes');
 const produtoRoutes = require('./routes/produtoRoutes');
 const categoriaRoutes = require('./routes/categoriaRoutes');
 const vendasRoutes = require('./routes/vendaRoutes');
@@ -27,7 +26,6 @@ app.use(methodOverride('_method')); // Suporte para PUT e DELETE via formulário
 
 // Rotas
 app.use('/', indexRoutes);
-app.use('/users', userRoutes);
 app.use('/produto', produtoRoutes);
 app.use('/categorias', categoriaRoutes);
 app.use('/clientes', clientesRoutes); 
