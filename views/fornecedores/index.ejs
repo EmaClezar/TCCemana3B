@@ -3,6 +3,38 @@
 <head>
     <title>Lista de Fornecedores</title>
 </head>
+<style>
+    /* Estilo adicional para os links e botões */
+    .client-list-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .client-list-item a {
+        text-decoration: none;
+        color: #0259b7;
+        font-weight: bold;
+    }
+    .client-list-item a:hover {
+        color: #004085;
+    }
+    .client-list-item button {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+    .client-list-item button:hover {
+        background-color: #c82333;
+    }
+    .client-list-item .btn {
+        font-size: 0.875rem;
+        margin-left: 5px;
+    }
+</style>
 <body>
     <h1>Fornecedores</h1>
     <a href="/fornecedores/new">Adicionar Novo Fornecedor</a>
@@ -10,7 +42,7 @@
         <% fornecedores.forEach(fornecedor => { %>
             <li>
                 <a href="/fornecedores/<%= fornecedor.id %>">
-                    <%= fornecedor.nome %> - <%= fornecedor.email %> <%= fornecedor['CPF/CNPJ'] %> <%= fornecedor.telefone %> <%= fornecedor.endereco %>
+                    <%= fornecedor.nome %> - <%= fornecedor.email %> <%= fornecedor['cpf_cnpj'] %> <%= fornecedor.telefone %> <%= fornecedor.endereco %>
 
       
                 </a>

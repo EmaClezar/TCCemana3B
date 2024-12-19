@@ -12,10 +12,10 @@
                 <td><%= categoria.id %></td>
                 <td><%= categoria.nome %></td>
                 <td>
-                    <a href="/categorias/<%= categoria.id %>" class="btn btn-primary">View</a>
-                    <a href="/categorias/<%= categoria.id %>/edit" class="btn btn-warning">Edit</a>
+                    <a href="/categorias/<%= categoria.id %>" class="btn btn-primary">Vizualizar</a>
+                    <a href="/categorias/<%= categoria.id %>/edit" class="btn btn-warning">Editar</a>
                     <form action="/categorias/<%= categoria.id %>?_method=DELETE" method="POST" style="display: inline;">
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger">Excluir</button>
                     </form>
                 </td>
             </tr>

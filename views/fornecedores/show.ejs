@@ -3,10 +3,50 @@
 <head>
     <title>Detalhes do Fornecedor</title>
 </head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .client-details {
+            margin-top: 30px;
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .client-details h1 {
+            color: #0259b7;
+        }
+        .client-details p {
+            font-size: 1.1rem;
+            color: #495057;
+        }
+        .client-details a {
+            text-decoration: none;
+            background-color: #ffc107;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .client-details a:hover {
+            background-color: #e0a800;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+    </style>
 <body>
     <h1><%= fornecedor.nome %></h1>
     <p>Email: <%= fornecedor.email %></p>
-    <p>CPF/CNPJ: <%= fornecedor.CPF/CNPJ %></p>
+    <p>CPF/CNPJ: <%= fornecedor.cpf_cnpj %></p>
     <p>Telefone: <%= fornecedor.telefone %></p>
     <p>Endereço: <%= fornecedor.endereco %></p>
 

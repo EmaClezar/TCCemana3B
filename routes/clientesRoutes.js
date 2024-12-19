@@ -2,13 +2,14 @@ const express = require('express');
 const clientesController = require('../controllers/clientesController');
 const router = express.Router();
 
-// Rotas específicas
+// Rota para renderizar o formulário de criação de cliente
 router.get('/new', clientesController.renderCreateForm);
 
-// Rotas gerais
+// Rota para listar todos os clientes
 router.get('/', clientesController.getAllclientes);
+
+// Rota para criar um novo cliente
 router.post('/', clientesController.createclientes);
-router.get('/list', clientesController.getAllclientes);
 
 // Rotas dinâmicas
 router.get('/:id', clientesController.getclientesById);

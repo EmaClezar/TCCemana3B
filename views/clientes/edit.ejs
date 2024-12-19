@@ -30,6 +30,19 @@
             border-radius: 8px;
             width: 100%;
         }
+        .btn-view {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .btn-view:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
@@ -69,12 +82,15 @@
             <!-- Campo para a Dívida -->
             <div class="form-group">
                 <label for="valorDivida">Dívida:</label>
-                <input type="number" class="form-control" name="divida" value="<%= cliente.divida %>" required>
+                <input type="number" class="form-control" name="divida" value="<%= cliente.valorDivida %>" required>
             </div>
 
             <!-- Botão de envio -->
             <button type="submit">Salvar Alterações</button>
         </form>
+
+        <!-- Botão de Visualização do Cliente -->
+        <a href="/clientes/<%= cliente.id %>" class="btn btn-view">Ver Cliente</a>
     </div>
 </body>
 </html>

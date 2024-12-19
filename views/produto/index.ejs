@@ -21,10 +21,10 @@
                 <td><%= produto.quantidade %></td>
                 <td><%= produto.categoria_nome %></td>
                 <td>
-                    <a href="/produto/<%= produto.id %>" class="btn btn-primary">View</a>
-                    <a href="/produto/<%= produto.id %>/edit" class="btn btn-warning">Edit</a>
+                    <a href="/produto/<%= produto.id %>" class="btn btn-primary">Vizualizar</a>
+                    <a href="/produto/<%= produto.id %>/edit" class="btn btn-warning">Editar</a>
                     <form action="/produto/<%= produto.id %>?_method=DELETE" method="POST" style="display: inline;">
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger">Excluir</button>
                     </form>
                 </td>
             </tr>

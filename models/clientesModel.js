@@ -7,6 +7,11 @@ const Clientes = {
             return callback(new Error("Nome e endereço são obrigatórios"));
         }
 
+        // Verifica se o valorDivida não é null ou vazio
+        if (cliente.valorDivida === undefined || cliente.valorDivida === null || cliente.valorDivida === '') {
+            return callback(new Error("Valor da dívida é obrigatório"));
+        }
+
         const query = `
             INSERT INTO clientes (nome, email, telefone, endereco, cpf, valorDivida)
             VALUES (?, ?, ?, ?, ?, ?)
@@ -47,6 +52,11 @@ const Clientes = {
     update: (id, cliente, callback) => {
         if (!id || !cliente.nome || !cliente.endereco) {
             return callback(new Error("ID, nome e endereço são obrigatórios"));
+        }
+
+        // Verifica se o valorDivida não é null ou vazio
+        if (cliente.valorDivida === undefined || cliente.valorDivida === null || cliente.valorDivida === '') {
+            return callback(new Error("Valor da dívida é obrigatório"));
         }
 
         const query = `

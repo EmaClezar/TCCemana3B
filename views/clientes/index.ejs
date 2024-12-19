@@ -32,6 +32,10 @@
         .client-list-item button:hover {
             background-color: #c82333;
         }
+        .client-list-item .btn {
+            font-size: 0.875rem;
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
@@ -47,7 +51,11 @@
                         </a>
                     </div>
                     <div>
+                        <!-- Botão de Visualizar -->
+                        <a href="/clientes/<%= cliente.id %>" class="btn btn-info btn-sm">Visualizar</a>
+                        <!-- Botão de Editar -->
                         <a href="/clientes/<%= cliente.id %>/edit" class="btn btn-warning btn-sm">Editar</a>
+                        <!-- Formulário de Exclusão -->
                         <form action="/clientes/<%= cliente.id %>?_method=DELETE" method="POST" class="d-inline">
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este cliente?')">Excluir</button>
                         </form>
