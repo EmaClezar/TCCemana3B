@@ -1,23 +1,26 @@
 const clientes = require('../models/clientesModel');
 
 const clientesController = {
-    // Cria um novo clientes
+    // Cria um novo cliente
     createclientes: (req, res) => {
-        const newclientes = {
-            nome: req.body.nome,
-            email: req.body.email,
-            telefone: req.body.telefone
-        };
+        const { nome, email, telefone, endereco, cpf, divida } = req.body;
+
+        // Verifica se o campo endereco foi preenchido
+        if (!endereco) {
+            return res.status(400).json({ message: 'Endereço é obrigatório.' });
+        }
+
+        const newclientes = { nome, email, telefone, endereco, cpf, valorDivida: divida };
 
         clientes.create(newclientes, (err, clientesId) => {
             if (err) {
                 return res.status(500).json({ error: err });
             }
-            res.redirect('/clientes');
+            res.redirect('/clientes'); // Redireciona após criação bem-sucedida
         });
     },
 
-    // Busca um clientes pelo ID
+    // Busca um cliente pelo ID
     getclientesById: (req, res) => {
         const clientesId = req.params.id;
 
@@ -26,7 +29,7 @@ const clientesController = {
                 return res.status(500).json({ error: err });
             }
             if (!clientes) {
-                return res.status(404).json({ message: 'clientes não encontrado' });
+                return res.status(404).json({ message: 'Cliente não encontrado' });
             }
             res.render('clientes/show', { clientes });
         });
@@ -56,30 +59,33 @@ const clientesController = {
                 return res.status(500).json({ error: err });
             }
             if (!clientes) {
-                return res.status(404).json({ message: 'clientes não encontrado' });
+                return res.status(404).json({ message: 'Cliente não encontrado' });
             }
             res.render('clientes/edit', { clientes });
         });
     },
 
-    // Atualiza os dados de um clientes
+    // Atualiza os dados de um cliente
     updateclientes: (req, res) => {
         const clientesId = req.params.id;
-        const updatedclientes = {
-            nome: req.body.nome,
-            email: req.body.email,
-            telefone: req.body.telefone
-        };
+        const { nome, email, telefone, endereco, cpf, divida } = req.body;
+
+        // Verifica se o campo endereco foi preenchido
+        if (!endereco) {
+            return res.status(400).json({ message: 'Endereço é obrigatório.' });
+        }
+
+        const updatedclientes = { nome, email, telefone, endereco, cpf, valorDivida: divida };
 
         clientes.update(clientesId, updatedclientes, (err) => {
             if (err) {
                 return res.status(500).json({ error: err });
             }
-            res.redirect('/clientes');
+            res.redirect('/clientes'); // Redireciona após atualização bem-sucedida
         });
     },
 
-    // Exclui um clientes pelo ID
+    // Exclui um cliente pelo ID
     deleteclientes: (req, res) => {
         const clientesId = req.params.id;
 
@@ -87,7 +93,7 @@ const clientesController = {
             if (err) {
                 return res.status(500).json({ error: err });
             }
-            res.redirect('/clientes');
+            res.redirect('/clientes'); // Redireciona após exclusão bem-sucedida
         });
     }
 };

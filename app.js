@@ -7,7 +7,7 @@ const expressLayouts = require('express-ejs-layouts');
 const indexRoutes = require('./routes/indexRoutes');
 const produtoRoutes = require('./routes/produtoRoutes');
 const categoriaRoutes = require('./routes/categoriaRoutes');
-const vendasRoutes = require('./routes/vendaRoutes');
+const vendasRoutes = require('./routes/vendasRoutes');
 const clientesRoutes = require('./routes/clientesRoutes'); // Rota de clientes adicionada
 const fornecedoresRoutes = require('./routes/fornecedoresRoutes'); // Rota de fornecedores adicionada
 

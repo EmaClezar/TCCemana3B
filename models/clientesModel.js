@@ -1,70 +1,105 @@
-const express = require('express');
-const router = express.Router();
-const clientes = require('../models/clientesModel');
+const db = require('../config/db'); // Supondo que a conexão com o banco está configurada no arquivo db.js
 
-// Rota para listar todos os clientes
-router.get('/', async (req, res) => {
-    try {
-        const allClientes = await clientes.getAll();
-        res.json(allClientes);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
-// Rota para buscar um cliente específico pelo ID
-router.get('/:id', async (req, res) => {
-    const clienteId = req.params.id;
-    try {
-        const cliente = await clientes.findById(clienteId);
-        if (!cliente) {
-            return res.status(404).json({ message: 'Cliente não encontrado' });
+const Clientes = {
+    // Criação de um novo cliente
+    create: (cliente, callback) => {
+        if (!cliente.nome || !cliente.endereco) {
+            return callback(new Error("Nome e endereço são obrigatórios"));
         }
-        res.json(cliente);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
 
-// Rota para criar um novo cliente
-router.post('/', async (req, res) => {
-    const novoCliente = req.body;
-    try {
-        const clienteId = await clientes.create(novoCliente);
-        res.status(201).json({ message: 'Cliente criado com sucesso', clienteId });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
+        const query = `
+            INSERT INTO clientes (nome, email, telefone, endereco, cpf, valorDivida)
+            VALUES (?, ?, ?, ?, ?, ?)
+        `;
+        db.query(
+            query,
+            [cliente.nome, cliente.email, cliente.telefone, cliente.endereco, cliente.cpf, cliente.valorDivida],
+            (err, results) => {
+                if (err) {
+                    console.error('Erro ao criar cliente:', err.message);
+                    return callback(err);
+                }
+                callback(null, results.insertId); // Retorna o ID do cliente criado
+            }
+        );
+    },
 
-// Rota para atualizar um cliente pelo ID
-router.put('/:id', async (req, res) => {
-    const clienteId = req.params.id;
-    const dadosAtualizados = req.body;
-    try {
-        const affectedRows = await clientes.update(clienteId, dadosAtualizados);
-        if (affectedRows === 0) {
-            return res.status(404).json({ message: 'Cliente não encontrado' });
+    // Busca um cliente pelo ID
+    findById: (id, callback) => {
+        if (!id) {
+            return callback(new Error("ID do cliente é necessário"));
         }
-        res.json({ message: `Cliente com ID ${clienteId} atualizado com sucesso` });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
 
-// Rota para excluir um cliente pelo ID
-router.delete('/:id', async (req, res) => {
-    const clienteId = req.params.id;
-    try {
-        const affectedRows = await clientes.delete(clienteId);
-        if (affectedRows === 0) {
-            return res.status(404).json({ message: 'Cliente não encontrado' });
+        const query = 'SELECT * FROM clientes WHERE id = ?';
+        db.query(query, [id], (err, results) => {
+            if (err) {
+                console.error('Erro ao buscar cliente por ID:', err.message);
+                return callback(err);
+            }
+            if (results.length === 0) {
+                return callback(null, null); // Cliente não encontrado
+            }
+            callback(null, results[0]); // Retorna o primeiro registro encontrado
+        });
+    },
+
+    // Atualiza os dados de um cliente
+    update: (id, cliente, callback) => {
+        if (!id || !cliente.nome || !cliente.endereco) {
+            return callback(new Error("ID, nome e endereço são obrigatórios"));
         }
-        res.json({ message: `Cliente com ID ${clienteId} excluído com sucesso` });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
 
-// Exporta o router para ser usado no app.js
-module.exports = router;
+        const query = `
+            UPDATE clientes
+            SET nome = ?, email = ?, telefone = ?, endereco = ?, cpf = ?, valorDivida = ?
+            WHERE id = ?
+        `;
+        db.query(
+            query,
+            [cliente.nome, cliente.email, cliente.telefone, cliente.endereco, cliente.cpf, cliente.valorDivida, id],
+            (err, results) => {
+                if (err) {
+                    console.error('Erro ao atualizar cliente:', err.message);
+                    return callback(err);
+                }
+                if (results.affectedRows === 0) {
+                    return callback(null, null); // Cliente não encontrado
+                }
+                callback(null, results);
+            }
+        );
+    },
+
+    // Exclui um cliente pelo ID
+    delete: (id, callback) => {
+        if (!id) {
+            return callback(new Error("ID do cliente é necessário"));
+        }
+
+        const query = 'DELETE FROM clientes WHERE id = ?';
+        db.query(query, [id], (err, results) => {
+            if (err) {
+                console.error('Erro ao excluir cliente:', err.message);
+                return callback(err);
+            }
+            if (results.affectedRows === 0) {
+                return callback(null, null); // Cliente não encontrado
+            }
+            callback(null, results);
+        });
+    },
+
+    // Busca todos os clientes
+    getAll: (callback) => {
+        const query = 'SELECT * FROM clientes';
+        db.query(query, (err, results) => {
+            if (err) {
+                console.error('Erro ao buscar todos os clientes:', err.message);
+                return callback(err);
+            }
+            callback(null, results);
+        });
+    },
+};
+
+module.exports = Clientes;

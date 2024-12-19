@@ -1,34 +1,31 @@
-//crie o conteudo deste arquivo vendasController.js com o seguinte conteudo: tabela de vendas com os campos: id, data, valor, , produto_id
-
 const vendas = require('../models/vendasModel');
 
 const vendasController = {
     createvendas: (req, res) => {
         const newvendas = {
-            data: req.body.data_vendas,
-            valor: req.body.valor_total,
-            
+            data_vendas: req.body.data_vendas,
+            valor_total: req.body.valor_total,
         };
 
         vendas.create(newvendas, (err, vendasId) => {
             if (err) {
                 return res.status(500).json({ error: err });
             }
-            res.redirect('/vendas');
+            res.redirect('/vendas'); // Redireciona para a lista de vendas
         });
     },
 
     getvendasById: (req, res) => {
         const vendasId = req.params.id;
 
-        vendas.findById(vendasId, (err, vendas) => {
+        vendas.findById(vendasId, (err, venda) => { // A variável é 'venda', não 'vendas'
             if (err) {
                 return res.status(500).json({ error: err });
             }
-            if (!vendas) {
-                return res.status(404).json({ message: 'vendas not found' });
+            if (!venda) {
+                return res.status(404).json({ message: 'Venda não encontrada' });
             }
-            res.render('vendas/show', { vendas });
+            res.render('vendas/show', { venda }); // A variável é 'venda'
         });
     },
 
@@ -48,43 +45,42 @@ const vendasController = {
     renderEditForm: (req, res) => {
         const vendasId = req.params.id;
 
-        vendas.findById(vendasId, (err, vendas) => {
+        vendas.findById(vendasId, (err, venda) => { // A variável é 'venda'
             if (err) {
                 return res.status(500).json({ error: err });
             }
-            if (!vendas) {
-                return res.status(404).json({ message: 'vendas not found' });
+            if (!venda) {
+                return res.status(404).json({ message: 'Venda não encontrada' });
             }
-            res.render('vendas/edit', { vendas });
+            res.render('vendas/edit', { venda }); // A variável é 'venda'
         });
     },
 
     updatevendas: (req, res) => {
         const vendasId = req.params.id;
         const updatedvendas = {
-            data: req.body.data_vendas,
-            valor: req.body.valor_total,
-            
+            data_vendas: req.body.data_vendas,
+            valor_total: req.body.valor_total,
         };
 
-        vendas.update(vendasId, updatedvendas, (err, result) => {
+        vendas.update(vendasId, updatedvendas, (err) => {
             if (err) {
                 return res.status(500).json({ error: err });
             }
-            res.redirect('/vendas');
+            res.redirect('/vendas'); // Redireciona após a atualização
         });
     },
 
     deletevendas: (req, res) => {
         const vendasId = req.params.id;
 
-        vendas.delete(vendasId, (err, result) => {
+        vendas.delete(vendasId, (err) => {
             if (err) {
                 return res.status(500).json({ error: err });
             }
-            res.redirect('/vendas');
+            res.redirect('/vendas'); // Redireciona após a exclusão
         });
-    }
+    },
 };
 
 module.exports = vendasController;

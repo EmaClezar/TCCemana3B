@@ -1,23 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <style>
+        /* Estilo adicional para os links e botões */
+        .client-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .client-list-item a {
+            text-decoration: none;
+            color: #0259b7;
+            font-weight: bold;
+        }
+        .client-list-item a:hover {
+            color: #004085;
+        }
+        .client-list-item button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .client-list-item button:hover {
+            background-color: #c82333;
+        }
+    </style>
 </head>
 <body>
-    <h1>Clientes</h1>
-    <a href="/clientes/new">Adicionar Novo Cliente</a>
-    <ul>
-        <% clientes.forEach(cliente => { %>
-            <li>
-                <a href="/clientes/<%= cliente.id %>">
-                    <%= cliente.nome %> - <%= cliente.email %>  <%= cliente.telefone %>   <%= cliente.endereco %> <%= cliente.cpf %>  <%= cliente.divida %>
-                </a> 
-                <a href="/clientes/<%= cliente.id %>/edit">Editar</a>
-                <form action="/clientes/<%= cliente.id %>?_method=DELETE" method="POST">
-                    <button type="submit">Excluir</button>
-                </form>
-            </li>
-        <% }) %>
-    </ul>
+    <div class="container">
+        <h1 class="mt-4">Clientes</h1>
+        <a href="/clientes/new" class="btn btn-primary mb-4">Adicionar Novo Cliente</a>
+        <ul class="list-unstyled">
+            <% clientes.forEach(cliente => { %>
+                <li class="client-list-item">
+                    <div>
+                        <a href="/clientes/<%= cliente.id %>">
+                            <%= cliente.nome %> - <%= cliente.email %> - <%= cliente.telefone %> - <%= cliente.endereco %> - <%= cliente.cpf %> - R$ <%= cliente.valorDivida%>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="/clientes/<%= cliente.id %>/edit" class="btn btn-warning btn-sm">Editar</a>
+                        <form action="/clientes/<%= cliente.id %>?_method=DELETE" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este cliente?')">Excluir</button>
+                        </form>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

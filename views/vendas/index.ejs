@@ -1,29 +1,17 @@
-<h1>Lista de vendas</h1>
-
-<form id="searchForm" method="GET" action="/vendas">
-    <div class="form-group">
-        <label for="search">Buscar vendas:</label>
-        <input type="text" id="search" name="search" class="form-control" placeholder="Digite o ID do produto" autocomplete="off">
-    </div>
-</form>
-
+<h1>Lista de Vendas</h1>
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
             <th>Data</th>
-            <th>Valor</th>
-            <th>Quantidade</th>
-            <th>Produto ID</th>
-            <th>Ação</th>
+            <th>Valor Total</th>
+            <th>Ações</th>
         </tr>
     </thead>
-    <tbody id="vendasTableBody">
-        <% vendas.forEach(venda=> { %>
+    <tbody>
+        <% vendas.forEach(venda => { %>
             <tr>
-                <td><%= vendas.id %></td>
-                <td><%= vendas.data %></td>
-                <td><%= vendas.valor %></td>
+                <td><%= venda.data_vendas %></td> <!-- Corrigido para 'venda.data_vendas' -->
+                <td><%= venda.valor_total %></td> <!-- Corrigido para 'venda.valor_total' -->
                 <td>
                     <a href="/vendas/<%= venda.id %>" class="btn btn-primary">Ver</a>
                     <a href="/vendas/<%= venda.id %>/edit" class="btn btn-warning">Editar</a>
@@ -36,6 +24,7 @@
     </tbody>
 </table>
 
+
 <script>
     document.getElementById('search').addEventListener('input', function() {
         const searchValue = this.value;
@@ -44,18 +33,17 @@
             .then(response => response.json())
             .then(data => {
                 const tbody = document.getElementById('vendasTableBody');
-                tbody.innerHTML = ''; // Clear existing rows
+                tbody.innerHTML = ''; // Limpar as linhas existentes
 
                 data.vendas.forEach(venda => {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
-                        <td>${venda.id}</td>
                         <td>${venda.data}</td>
                         <td>${venda.valor}</td>
                         <td>
-                            <a href="/vendas/${vendas.id}" class="btn btn-primary">Ver</a>
-                            <a href="/vendas/${vendas.id}/edit" class="btn btn-warning">Editar</a>
-                            <form action="/vendas/${vendas.id}?_method=DELETE" method="POST" style="display: inline;">
+                            <a href="/vendas/${venda.id}" class="btn btn-primary">Ver</a>
+                            <a href="/vendas/${venda.id}/edit" class="btn btn-warning">Editar</a>
+                            <form action="/vendas/${venda.id}?_method=DELETE" method="POST" style="display: inline;">
                                 <button type="submit" class="btn btn-danger">Excluir</button>
                             </form>
                         </td>
