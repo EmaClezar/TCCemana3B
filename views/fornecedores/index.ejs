@@ -1,57 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Lista de Fornecedores</title>
-</head>
-<style>
-    /* Estilo adicional para os links e botões */
-    .client-list-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-    .client-list-item a {
-        text-decoration: none;
-        color: #0259b7;
-        font-weight: bold;
-    }
-    .client-list-item a:hover {
-        color: #004085;
-    }
-    .client-list-item button {
-        background-color: #dc3545;
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        border-radius: 5px;
-        font-size: 1rem;
-    }
-    .client-list-item button:hover {
-        background-color: #c82333;
-    }
-    .client-list-item .btn {
-        font-size: 0.875rem;
-        margin-left: 5px;
-    }
-</style>
-<body>
-    <h1>Fornecedores</h1>
-    <a href="/fornecedores/new">Adicionar Novo Fornecedor</a>
-    <ul>
-        <% fornecedores.forEach(fornecedor => { %>
-            <li>
-                <a href="/fornecedores/<%= fornecedor.id %>">
-                    <%= fornecedor.nome %> - <%= fornecedor.email %> <%= fornecedor['cpf_cnpj'] %> <%= fornecedor.telefone %> <%= fornecedor.endereco %>
+<h1>Lista de fornecedores</h1>
+<table class="table">
+    <thead>
 
-      
-                </a>
-                <a href="/fornecedores/<%= fornecedor.id %>/edit">Editar</a>
-                <form action="/fornecedores/<%= fornecedor.id %>?_method=DELETE" method="POST">
-                    <button type="submit">Excluir</button>
-                </form>
-            </li>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Cpf_Cnpj</th>
+            <th>Número</th>
+            <th>Endereço</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <% fornecedores.forEach(fornecedores => { %>
+            <tr>
+                <td><%= fornecedores.id %></td>
+                <td><%= fornecedores.nome %></td>
+                <td><%= fornecedores.email %></td>
+                <td><%= fornecedores.cpf_cnpj %></td>
+                <td><%= fornecedores.telefone %></td>
+                <td><%= fornecedores.endereco %></td>
+                <td>
+                    <a href="/fornecedores/<%= fornecedores.id %>" class="btn btn-primary">Vizualizar</a>
+                    <a href="/fornecedores/<%= fornecedores.id %>/edit" class="btn btn-warning">Editar</a>
+                    <form action="/fornecedores/<%= fornecedores.id %>?_method=DELETE" method="POST" style="display: inline;">
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
+                </td>
+            </tr>
         <% }) %>
-    </ul>
-</body>
-</html>
+    </tbody>
+</table>
