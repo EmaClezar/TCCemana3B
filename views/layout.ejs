@@ -10,12 +10,12 @@
     <style>
         /* Estilo global */
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;
-          
-        }
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    padding-top: 220px; /* Adicione um padding-top para compensar a altura do navbar */
+}
 
         /* Jumbotron */
         .jumbotron {
@@ -92,28 +92,37 @@
             margin-top: 1rem;
         }
 
-        /* Estilização da Navbar */
-        header {
-            background-color: #0062cc; 
-            width: 100vw; /* Garante que o header ocupe toda a largura da tela visível */
-            margin: 0; /* Remove margens */
-            padding: 0.5rem 1rem; /* Adiciona espaçamento interno */
-            position: relative; /* Navbar não fixa */
-            
-            
+      /* Navbar */
+      nav.navbar {
+            background-color: #0062cc;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            padding: 0.8rem 1rem;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #f8f9fa;
         }
 
         .navbar-nav .dropdown-menu {
             background-color: #0056b3; /* Azul mais escuro */
             border: none;
      
-        }
-        .navbar {
-            background-color: #0062cc; 
-            margin: 20px;
-            padding: 0;
-            width: 138%; /* Reduz a largura do footer */
-            margin-left: -20%;
         }
 
         .navbar-brand {
@@ -150,20 +159,9 @@
             color: #cce5ff;
         }
 
-        /* Rodapé */
         footer.footer {
-    background-color: #0062cc;
-    color: #fff;
-    padding: 0.5rem 0;
-    text-align: center;
-    border-radius: 10px 10px 0 0;
-    box-shadow: 0 -5px 10px rgba(219, 209, 209, 0.711);
-    width: 138%; /* Reduz a largura do footer */
-    left: 30%; /* Move o footer mais para a esquerda */
-    font-size: 0.8rem;
-    margin: 0;
-    bottom: 0;
-    margin-left: -20%;
+    margin-top: 60px; /* Adiciona o espaço entre o footer e o conteúdo */
+  
 }
 
 footer.footer span {
